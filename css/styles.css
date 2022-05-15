@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-color: rgb(0, 160, 255);
+    --primary-color-hover: rgba(0, 160, 255, 0.75);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(55, 55, 55);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+}
+
+.heading {
+    font-size: 50px;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+.answer {
+    font-size: 30px;
+    font-weight: 550;
+    letter-spacing: 1.2px;
+    color: rgb(225, 225, 225);
+}
+
+.question-input {
+    font-size: 25px;
+    font-weight: 550;
+    padding: 0.5em 0.7em;
+    border-radius: 0.5em;
+    background-color: rgb(75, 75, 75);
+    color: rgb(200, 200, 200);
+    width: 33%;
+    border: none;
+    border-bottom: 0.1em solid var(--primary-color);
+}
+
+.question-input:focus {
+    outline: none;
+}
+
+.askButton {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 30px;
+    padding: 0.25em 0.7em;
+    border-radius: 0.25em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+
+.askButton:hover {
+    background-color: var(--primary-color-hover);
+}
