@@ -21,6 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(55, 55, 55);
+    padding: 50px;
 }
 
 .container {
@@ -30,12 +31,14 @@ body {
     flex-direction: column;
     gap: 50px;
     width: 100%;
+    max-height: 100%;
 }
 
 .heading {
     font-size: 50px;
     color: white;
     letter-spacing: 1.5px;
+    text-align: center;
 }
 
 .answer {
@@ -45,6 +48,15 @@ body {
     color: rgb(225, 225, 225);
 }
 
+.question-input::-webkit-scrollbar {
+    width: 7px;
+}
+
+.question-input::-webkit-scrollbar-thumb {
+    background-color: rgb(150, 150, 150);
+    border-radius: 100px;
+}
+
 .question-input {
     font-size: 25px;
     font-weight: 550;
@@ -52,8 +64,11 @@ body {
     border-radius: 0.5em;
     background-color: rgb(75, 75, 75);
     color: rgb(200, 200, 200);
-    width: 33%;
+    min-width: 33%;
+    min-height: 58px;
+    height: 200px;
     border: none;
+    resize: none;
     border-bottom: 0.1em solid var(--primary-color);
 }
 
@@ -74,4 +89,16 @@ body {
 
 .askButton:hover {
     background-color: var(--primary-color-hover);
+}
+
+@media (max-width: 1100px) {
+    .question-input {
+        min-width: 65%;
+    }
+}
+
+@media (max-width: 770px) {
+    .question-input {
+        min-width: 100%;
+    }
 }
