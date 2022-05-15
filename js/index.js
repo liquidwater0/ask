@@ -4,6 +4,12 @@ const questionInput = document.getElementById("questionInput");
 const askButton = document.getElementById("askButton");
 
 document.addEventListener("DOMContentLoaded", setTitle);
+
+document.addEventListener("keydown", ({ key }) => {
+    if (document.activeElement !== questionInput) return;
+    if (key === "Enter") askQuestion();
+});
+
 askButton.addEventListener("click", askQuestion);
 
 function askQuestion() {
