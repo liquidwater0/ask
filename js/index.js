@@ -12,7 +12,7 @@ function askQuestion() {
         return;
     }
 
-    const answers = ["Yes", "No", "Maybe"];
+    const answers = ["Yes", "No", "Maybe", "Ask again later"];
 
     answerElement.textContent = answers[Math.floor(Math.random() * answers.length)];
     questionInput.value = "";
