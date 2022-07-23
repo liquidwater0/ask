@@ -13,7 +13,8 @@ export default function Footer({ answer, updateQuestion, setRandomAnswer }) {
             <div className='container'>
                 <input 
                     className="question-input" 
-                    type="text" placeholder='Enter a question.' 
+                    type="text" 
+                    placeholder='Enter a question.' 
                     ref={questionInput}
                     onChange={() => updateQuestion(questionInput.current.value)}
                 />
