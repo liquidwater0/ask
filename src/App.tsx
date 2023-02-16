@@ -1,8 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './scss/App.scss';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
 
 /*
   Issues:
@@ -17,6 +14,15 @@ function App() {
   	const [answer, setAnswer] = useState<string>("");
   	const [question, setQuestion] = useState<string>("");
 
+	const questionInput = useRef<HTMLInputElement | null>(null);
+
+	useEffect(() => {
+        if (!questionInput.current) return;
+
+        questionInput.current.value = "";
+        updateQuestion(questionInput.current.value);
+    }, [answer]);
+
 	function setRandomAnswer() {
 		if (question.trim() == "") return;
 		setAnswer(answers[Math.floor(Math.random() * answers.length)]);
@@ -26,15 +32,43 @@ function App() {
 		setQuestion(question)
 	}
 
+    function handleQuestionChange() {
+        if (!questionInput.current) return;
+        updateQuestion(questionInput.current.value)
+    }
+
 	return (
 		<>
-			<Header title={title}/>
-			<Main answer={answer}/>
-			<Footer 
-				answer={answer} 
-				updateQuestion={updateQuestion} 
-				setRandomAnswer={setRandomAnswer}
-			/>
+			<header className='header'>
+				<h1>{ title }</h1>
+			</header>
+
+			<main className='main'>
+				<div>
+					<h2>Computer Says</h2>
+					<div className='answer-text'>{ answer }</div>
+				</div>
+			</main>
+
+			<footer className='footer'>
+				<div className='container'>
+					<input 
+						className="question-input" 
+						type="text" 
+						placeholder='Enter a question.' 
+						ref={questionInput}
+						onChange={handleQuestionChange}
+					/>
+					<button 
+						className='button ask-button' 
+						aria-label='ask question button' 
+						title='Ask question'
+						onClick={setRandomAnswer}
+					>
+						<i className='material-icons'>question_answer</i>
+					</button>
+				</div>
+			</footer>
 		</>
 	);
 }
