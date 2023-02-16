@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import './scss/App.scss';
+import { QuestionAnswer } from '@mui/icons-material';
 
 /*
   Issues:
@@ -40,12 +41,12 @@ function App() {
 	return (
 		<>
 			<header className='header'>
-				<h1>{ title }</h1>
+				<h1 className='title'>{ title }</h1>
 			</header>
 
 			<main className='main'>
 				<div>
-					<h2>Computer Says</h2>
+					<h2 className='computer-says-text'>Computer Says</h2>
 					<div className='answer-text'>{ answer }</div>
 				</div>
 			</main>
@@ -55,7 +56,7 @@ function App() {
 					<input 
 						className="question-input" 
 						type="text" 
-						placeholder='Enter a question.' 
+						placeholder='Enter a question...' 
 						ref={questionInput}
 						onChange={handleQuestionChange}
 					/>
@@ -65,7 +66,7 @@ function App() {
 						title='Ask question'
 						onClick={setRandomAnswer}
 					>
-						<i className='material-icons'>question_answer</i>
+						{ <QuestionAnswer/> }
 					</button>
 				</div>
 			</footer>

@@ -6,9 +6,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-*:not(.material-icons) {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -18,6 +15,7 @@ html, body {
 
 body {
     background-color: var(--theme-100);
+    padding: 2rem;
 }
 
 #root {
@@ -26,15 +24,11 @@ body {
     height: 100%;
 }
 
-.header {
-    padding: 25px 0px;
-
-    h1 {
-        text-align: center;
-        color: white;
-        font-weight: bold;
-        font-size: 3rem;
-    }
+.title {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
 }
 
 .main {
@@ -43,7 +37,7 @@ body {
     align-items: center;
     text-align: center;
 
-    h2 {
+    .computer-says-text {
         color: hsl(0, 0%, 70%);
         font-size: 1.75rem;
         font-weight: bold;
@@ -61,19 +55,20 @@ body {
 .footer {
     display: flex;
     justify-content: center;
-    background-color: var(--theme-200);
 
     .container {
         display: flex;
+        gap: 5rem;
     }
 
     .question-input {
         width: 100%;
         font-size: 2rem;
-        background-color: transparent;
+        background-color: var(--theme-200);
         color: white;
         text-align: center;
         font-weight: 500;
+        border-radius: 10000px;
         outline: none;
         border: none;
 
@@ -87,48 +82,68 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--theme-300);
+        background-color: var(--theme-200);
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
+        border-radius: 10000px;
         padding: 0.5em;
         aspect-ratio: 1 / 1;
         transition: 
             background-color 200ms,
             color 200ms;
 
-        i {
+        svg {
             font-size: inherit;
         }
 
         &:hover {
-            background-color: var(--theme-400);
-            color: $primary-color;
+            background-color: var(--theme-300);
         }
     }
 }
 
 @media (max-width: 1300px) {
-    .footer {
-        .container {
-            max-width: 100%;
-        }
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .computer-says-text {
+        font-size: 1.25rem !important;
+    }
+
+    .answer-text {
+        font-size: 3rem !important;
+    }
+
+    .question-input {
+        font-size: 1.75rem !important;
     }
 }
 
 @media (max-width: 550px) {
-    .header {
-        h1 {
-            font-size: 2rem;
-        }
+    body {
+        padding: 1rem;
     }
 
-    .footer {
-        .question-input {
-            font-size: 1.5rem;
-        }
+    .title {
+        font-size: 2rem;
+    }
 
-        .ask-button {
-            font-size: 2.25rem;
-        }
+    .answer-text {
+        font-size: 2.5rem !important;
+    }
+
+    .question-input {
+        font-size: 1.35rem !important;
+    }
+
+    .ask-button {
+        font-size: 2.25rem;
     }
 }
