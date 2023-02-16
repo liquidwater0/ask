@@ -1,12 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-export default function Footer({ answer, updateQuestion, setRandomAnswer }) {
-    const questionInput = useRef();
+type FooterProps = {
+    answer: string,
+    updateQuestion: (question: string) => void,
+    setRandomAnswer: () => void
+}
+
+export default function Footer({ answer, updateQuestion, setRandomAnswer }: FooterProps) {
+    const questionInput = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
+        if (!questionInput.current) return;
+
         questionInput.current.value = "";
         updateQuestion(questionInput.current.value);
     }, [answer]);
+
+    function handleQuestionChange() {
+        if (!questionInput.current) return;
+        updateQuestion(questionInput.current.value)
+    }
 
     return (
         <footer className='footer'>
@@ -16,7 +29,7 @@ export default function Footer({ answer, updateQuestion, setRandomAnswer }) {
                     type="text" 
                     placeholder='Enter a question.' 
                     ref={questionInput}
-                    onChange={() => updateQuestion(questionInput.current.value)}
+                    onChange={handleQuestionChange}
                 />
                 <button 
                     className='button ask-button' 
@@ -28,5 +41,5 @@ export default function Footer({ answer, updateQuestion, setRandomAnswer }) {
                 </button>
             </div>
         </footer>
-    )
+    );
 }

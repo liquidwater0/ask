@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function Main({ answer }) {
+export default function Main({ answer }: { answer: string }) {
     return (
         <main className='main'>
             <div>
@@ -8,5 +6,5 @@ export default function Main({ answer }) {
                 <div className='answer-text'>{ answer }</div>
             </div>
         </main>
-    )
+    );
 }
